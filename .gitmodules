@@ -1,0 +1,6 @@
+[submodule "bcl2fastq"]
+	path = bcl2fastq
+	url = git@github.com:oicr-gsi/bcl2fastq.git
+[submodule "ncov2019ArticNf"]
+	path = ncov2019ArticNf
+	url = git@github.com:oicr-gsi/ncov2019ArticNf.git

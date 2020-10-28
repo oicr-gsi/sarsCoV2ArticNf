@@ -1,0 +1,41 @@
+{
+    "defaults": {
+      "description": "sarsCoV2ArticNf workflow test",
+      "metrics_calculate": "calculate.sh",
+      "metrics_compare": "compare.sh",
+      "output_metrics_dir": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/1.0.0/output_metrics",
+      "parameters": {
+        "wdl_options": {
+          "read_from_cache": false,
+          "write_to_cache": false
+        }
+      }
+    },
+    "tests": [
+      {
+        "id": "sarsCoV2ArticNf_dataset1",
+        "parameters": {
+      "wdl_deps_zip": "${workflow_bundle_dir}/Workflow_Bundle_sarsCoV2ArticNf/1.0.0/lib/imports.zip",
+          "wdl_inputs": {
+            "sarsCoV2ArticNf.schemeVersionInput": "",
+            "sarsCoV2ArticNf.bcl2fastqMetas": [
+                {
+                    "samples": [
+                      {
+                        "barcodes": [
+                          ""
+                        ],
+                        "inlineUmi": ,
+                        "name": ""
+                      }
+                    ],
+                    "lanes": [],
+                    "runDirectory": ""
+                  }
+                ]
+            
+          }
+        }
+      }
+    ]
+  }
