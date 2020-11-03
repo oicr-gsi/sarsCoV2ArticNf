@@ -20,7 +20,7 @@
           "sarsCoV2ArticNf.schemeVersionInput": "V3",
           "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
           "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
-          "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.0.0",
+          "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingFilter": true,
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingPositions": true,
