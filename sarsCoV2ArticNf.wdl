@@ -128,7 +128,7 @@ task kraken2 {
   }
   
   parameter_meta {
-    fastq1: "Read 1 fastq file to rename."
+    fastq1: "Read 1 fastq file to be rename."
     fastq2: "Read 2 fastq file to rename."
     sample: "Output prefix to renamed fastqs with."
     kraken2DB: "Database for kraken2 data"
