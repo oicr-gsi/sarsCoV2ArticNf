@@ -38,7 +38,7 @@ workflow sarsCoV2ArticNf {
       ]
       output_meta: {
         bclFastqR1: "Fastq 1 from bcl2fastq",
-	bclFastqR2: "Fastq 2 from bcl2fastq",
+	      bclFastqR2: "Fastq 2 from bcl2fastq",
         readTrimmingFastqR1: "Fastq R1 from readTrimming step.",
         readTrimmingFastqR2: "Fastq R1 from readTrimming step.",
         readMappingBam: "Sorted bam from readMapping step.",
@@ -85,6 +85,12 @@ workflow sarsCoV2ArticNf {
     
     }
 
+    call variantCalling {
+    input:
+      sample = name,
+      bam = ncov2019ArticNf.readMappingBam
+    }
+
     call qcStats {
     input:
       sample = name,
@@ -108,6 +114,9 @@ workflow sarsCoV2ArticNf {
       File qcCsv = ncov2019ArticNf.qcCsv
       File nextflowLogs = ncov2019ArticNf.nextflowLogs
       File outputKrakenTxt = kraken2.out
+      File vcf = variantCalling.vcfFile
+      File consensusFasta = variantCalling.consensusFasta
+      File variantOnlyVcf = variantCalling.variantOnlyVcf
       File? outCvgHist = qcStats.cvgHist
       File outGenomecvgHist = qcStats.genomecvgHist
       File outGenomecvgPerBase = qcStats.genomecvgPerBase
@@ -155,6 +164,48 @@ task kraken2 {
     File out = "~{sample}.kreport2.txt"
   }
 }
+
+task variantCalling {
+  input {
+    String modules = "bcftools/1.9 samtools/1.9 vcftools/0.1.16 seqtk/1.3 sars-covid-2-polymasked/mn908947.3"
+    File bam
+    String sample
+    String sarsCovidRef = "$SARS_COVID_2_POLYMASKED_ROOT/MN908947.3.mask.fasta"
+    Int mem = 8
+    Int timeout = 72
+  }
+
+  String vcfName = "~{sample}.vcf"
+  String fastaName = "~{sample}.consensus.fasta"
+  String variantOnlyVcf_ = "~{sample}.v.vcf"
+
+  command <<<
+    set -euo pipefail
+
+    #Call consensus sequence
+    samtools mpileup -aa -uf ~{sarsCovidRef} ~{bam} | \
+    bcftools call --ploidy 1 -Mc | tee -a ~{vcfName} | \
+    vcfutils.pl vcf2fq -d 10 | \
+    seqtk seq -A - | sed '2~2s/[actg]/N/g' > ~{fastaName}
+
+    bcftools mpileup -a "INFO/AD,FORMAT/DP,FORMAT/AD" \
+    -d 8000 -f ~{sarsCovidRef} ~{bam} | \
+    tee ~{sample}.m.vcf | bcftools call --ploidy 1 -m -v > ~{variantOnlyVcf_}
+  >>>
+
+  runtime {
+    memory: "~{mem} GB"
+    modules: "~{modules}"
+    timeout: "~{timeout}"
+  }
+
+  output {
+    File vcfFile = "~{vcfName}"
+    File consensusFasta = "~{fastaName}"
+    File variantOnlyVcf = "~{variantOnlyVcf_}"
+  }
+}
+
 
 task qcStats {
   input {
@@ -208,4 +259,3 @@ task qcStats {
     File hostDepletedAlignmentStats = "~{sample}.samstats.txt"
   }
 }
-
