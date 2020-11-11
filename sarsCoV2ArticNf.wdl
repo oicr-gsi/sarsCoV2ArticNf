@@ -99,6 +99,16 @@ workflow sarsCoV2ArticNf {
       panelBed = bedInput
     }
 
+    call createJson {
+    input: 
+      primerTrimSamstats = qcStats.hostDepletedAlignmentStats,
+      hostSamstats = qcStats.hostMappedAlignmentStats,
+      qcStatistics = ncov2019ArticNf.qcCsv,
+      kraken2Report = kraken2.out,
+      coverageHist = qcStats.genomecvgHist,
+      vcfVariants = variantCalling.variantOnlyVcf
+    }
+
 
     output {
       File bclFastqR1 = fastqR1Bcl
@@ -122,6 +132,7 @@ workflow sarsCoV2ArticNf {
       File outGenomecvgPerBase = qcStats.genomecvgPerBase
       File outHostMappedAlignmentStats = qcStats.hostMappedAlignmentStats
       File outHostDepletedAlignmentStats = qcStats.hostDepletedAlignmentStats
+      File jsonOut = createJson.json
     }
 }
 
@@ -257,5 +268,54 @@ task qcStats {
     File genomecvgPerBase = "~{sample}.genome.cvgperbase.txt"
     File hostMappedAlignmentStats = "~{sample}.host.mapped.samstats.txt"
     File hostDepletedAlignmentStats = "~{sample}.samstats.txt"
+  }
+}
+
+task createJson {
+  input {
+    File primerTrimSamstats
+    File hostSamstats
+    File qcStatistics
+    File kraken2Report
+    File coverageHist
+    File vcfVariants
+    String modules = "sarscov2helper/1.0"
+    Int mem = 8
+    Int timeout = 72
+  }
+
+  parameter_meta {
+    primerTrimSamstats: "Sam stats of the primertrimmed file"
+    hostSamstats: "Sam stats of the host file"
+    qcStatistics: "QC stats from nextflow "
+    kraken2Report: "Taxonomic classification"
+    coverageHist: "Coverage history file"
+    vcfVariants: "v.vcf file which holds variants"
+    mem: "Memory (in GB) to allocate to the job."
+    timeout: "Maximum amount of time (in hours) the task can run for."
+    modules: "Environment module name and version to load (space separated) before command execution."
+  }
+
+   command <<<
+    set -euo pipefail
+
+    cat ~{primerTrimSamstats} | grep SN | cut -f2,3 > primerTrim.txt 
+    cat ~{hostSamstats} | grep SN | cut -f2,3 > hostSamstats.txt 
+    cat ~{coverageHist} | grep genome > meancvg.txt
+    cat ~{vcfVariants} | grep -v ^# > v.txt
+
+    jsonCreater.py -s primerTrim.txt  -o hostSamstats.txt  -q ~{qcStatistics} -k ~{kraken2Report} -m meancvg.txt -v v.txt
+
+    >>>
+
+    runtime {
+    memory: "~{mem} GB"
+    modules: "~{modules}"
+    timeout: "~{timeout}"
+    }
+
+    output {
+    File json = "metrics.json"
+
   }
 }
