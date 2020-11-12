@@ -347,7 +347,7 @@ task createPdf {
     String library
     String external
     String run
-    String modules = "rmarkdown/1.0"
+    String modules = "rmarkdown/0.1"
     Int mem = 8
     Int timeout = 72
   }
