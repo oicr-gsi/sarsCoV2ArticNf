@@ -340,9 +340,12 @@ task createJson {
 task createPdf {
   input {
     File json
+    String jsonName = basename(json)
     String rmdScript = "$SARSCOV2HELPER_ROOT/share/sarscov2help/json_COVID_Report.Rmd" 
     File cvgPerBaseFile
+    String cvgPerBaseFileName = basename(cvgPerBaseFile)
     File cvgHistFile
+    String cvgHistFileName = basename(cvgHistFile)
     String sample
     String library
     String external
@@ -370,8 +373,11 @@ task createPdf {
     set -euo pipefail
 
     cp /.mounts/labs/gsiprojects/gsi/rshah/json_COVID_Report.Rmd .
+    cp ~{cvgPerBaseFile} . 
+    cp ~{cvgHistFile} .
+    cp ~{json} .
 
-    Rscript -e "rmarkdown::render(./json_COVID_Report.Rmd, params=list(json=~{json},perbasefile=~{cvgPerBaseFile}, histfile=~{cvgHistFile}, \
+    Rscript -e "rmarkdown::render(./json_COVID_Report.Rmd, params=list(json=./~{jsonName},perbasefile=./~{cvgPerBaseFileName}, histfile=./~{cvgHistFileName}, \
                 sample=~{sample}, library=~{library}, ext=~{external}, run=~{run}, refname=MN), output_file=~{sample}.pdf)"
 
     >>>
