@@ -377,8 +377,8 @@ task createPdf {
     cp ~{cvgHistFile} .
     cp ~{json} .
 
-    Rscript -e "rmarkdown::render(./json_COVID_Report.Rmd, params=list(json=./~{jsonName},perbasefile=./~{cvgPerBaseFileName}, histfile=./~{cvgHistFileName}, \
-                sample=~{sample}, library=~{library}, ext=~{external}, run=~{run}, refname=MN), output_file=~{sample}.pdf)"
+    Rscript -e "rmarkdown::render('./json_COVID_Report.Rmd', params=list(json='./~{jsonName}',perbasefile=.'/~{cvgPerBaseFileName}', histfile='./~{cvgHistFileName}', \
+                sample='~{sample}', library='~{library}', ext='~{external}', run='~{run}', refname='MN'), output_file='~{sample}.pdf')"
 
     >>>
 
