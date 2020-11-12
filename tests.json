@@ -19,6 +19,9 @@
         "wdl_inputs": {
           "sarsCoV2ArticNf.schemeVersionInput": "V3",
           "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+	  "sarsCoV2ArticNf.inputLibrary": "test_lib",
+	  "sarsCoV2ArticNf.inputExternal": "test_external",
+	  "sarsCoV2ArticNf.inputRun": "test_run",
           "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
           "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
@@ -49,6 +52,9 @@
         "wdl_inputs": {
           "sarsCoV2ArticNf.schemeVersionInput": "V3",
           "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+	  "sarsCoV2ArticNf.inputLibrary": "test_lib",
+          "sarsCoV2ArticNf.inputExternal": "test_external",
+          "sarsCoV2ArticNf.inputRun": "test_run",
           "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
           "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
@@ -79,6 +85,9 @@
         "wdl_inputs": {
           "sarsCoV2ArticNf.schemeVersionInput": "V3",
           "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+	  "sarsCoV2ArticNf.inputLibrary": "test_lib",
+          "sarsCoV2ArticNf.inputExternal": "test_external",
+          "sarsCoV2ArticNf.inputRun": "test_run",
           "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
           "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
           "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,

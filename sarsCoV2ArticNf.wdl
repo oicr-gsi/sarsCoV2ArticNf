@@ -14,12 +14,18 @@ workflow sarsCoV2ArticNf {
         Array[bcl2fastqMeta] bcl2fastqMetas
         String schemeVersionInput
         File bedInput
+        String inputLibrary
+        String inputExternal
+        String inputRun
     }
 
     parameter_meta {
         bcl2fastqMetas: "Samples, lanes, and runDirectory for bcl2fastq"
         schemeVersionInput: "Version for primer"
         bedInput: "Bed file for primer"
+        inputLibrary: "Library of the run"
+        inputExternal: "External name of the run"
+        inputRun: "run of the file"
     }
 
     meta {
@@ -107,6 +113,17 @@ workflow sarsCoV2ArticNf {
       kraken2Report = kraken2.out,
       coverageHist = qcStats.genomecvgHist,
       vcfVariants = variantCalling.variantOnlyVcf
+    }
+
+    call createPdf {
+    input: 
+      json = createJson.json,
+      cvgPerBaseFile = qcStats.genomecvgPerBase,
+      cvgHistFile = qcStats.cvgHist,
+      sample = name,
+      library = inputLibrary,
+      external = inputExternal,
+      run = inputRun
     }
 
 
@@ -263,7 +280,7 @@ task qcStats {
   }
 
   output {
-    File? cvgHist = "~{sample}.cvghist.txt"
+    File cvgHist = "~{sample}.cvghist.txt"
     File genomecvgHist = "~{sample}.genomecvghist.txt"
     File genomecvgPerBase = "~{sample}.genome.cvgperbase.txt"
     File hostMappedAlignmentStats = "~{sample}.host.mapped.samstats.txt"
@@ -316,6 +333,57 @@ task createJson {
 
     output {
     File json = "metrics.json"
+
+  }
+}
+
+task createPdf {
+  input {
+    File json
+    String rmdScript = "$SARSCOV2HELPER_ROOT/share/sarscov2help/json_COVID_Report.Rmd" 
+    File cvgPerBaseFile
+    File cvgHistFile
+    String sample
+    String library
+    String external
+    String run
+    String modules = "rmarkdown/1.0 sarscov2helper/1.0"
+    Int mem = 8
+    Int timeout = 72
+  }
+
+  parameter_meta {
+    json: "json file of all the info"
+    rmdScript: "rmd script to make the pdf"
+    cvgPerBaseFile: "Coverage for base file"
+    cvgHistFile: "Coverage for history file"
+    sample: "Sample Info"
+    library: "Library Info"
+    external: "External Info"
+    run: "Run info"
+    mem: "Memory (in GB) to allocate to the job."
+    timeout: "Maximum amount of time (in hours) the task can run for."
+    modules: "Environment module name and version to load (space separated) before command execution."
+  }
+
+   command <<<
+    set -euo pipefail
+
+    cp ~{rmdScript} .
+
+    Rscript -e "rmarkdown::render(./json_COVID_Report.Rmd, params=list(json=~{json},perbasefile=~{cvgPerBaseFile}, histfile=~{cvgHistFile}, \
+                sample=~{sample}, library=~{library}, ext=~{external}, run=~{run}, refname=MN), output_file=~{sample}.pdf)"
+
+    >>>
+
+    runtime {
+    memory: "~{mem} GB"
+    modules: "~{modules}"
+    timeout: "~{timeout}"
+    }
+
+    output {
+    File pdf = "~{sample}.pdf"
 
   }
 }
