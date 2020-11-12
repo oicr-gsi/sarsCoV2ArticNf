@@ -296,7 +296,7 @@ task createJson {
     File kraken2Report
     File coverageHist
     File vcfVariants
-    String modules = "sarscov2helper/1.0"
+    String modules = "python/3.6"
     Int mem = 8
     Int timeout = 72
   }
@@ -321,7 +321,7 @@ task createJson {
     cat ~{coverageHist} | grep genome > meancvg.txt
     cat ~{vcfVariants} | grep -v ^# > v.txt
 
-    jsonCreater.py -s primerTrim.txt  -o hostSamstats.txt  -q ~{qcStatistics} -k ~{kraken2Report} -m meancvg.txt -v v.txt
+    python3 /.mounts/labs/gsiprojects/gsi/rshah/jsonCreater.py -s primerTrim.txt  -o hostSamstats.txt  -q ~{qcStatistics} -k ~{kraken2Report} -m meancvg.txt -v v.txt
 
     >>>
 
@@ -347,7 +347,7 @@ task createPdf {
     String library
     String external
     String run
-    String modules = "rmarkdown/1.0 sarscov2helper/1.0"
+    String modules = "rmarkdown/1.0"
     Int mem = 8
     Int timeout = 72
   }
@@ -369,7 +369,7 @@ task createPdf {
    command <<<
     set -euo pipefail
 
-    cp ~{rmdScript} .
+    cp /.mounts/labs/gsiprojects/gsi/rshah/json_COVID_Report.Rmd .
 
     Rscript -e "rmarkdown::render(./json_COVID_Report.Rmd, params=list(json=~{json},perbasefile=~{cvgPerBaseFile}, histfile=~{cvgHistFile}, \
                 sample=~{sample}, library=~{library}, ext=~{external}, run=~{run}, refname=MN), output_file=~{sample}.pdf)"
