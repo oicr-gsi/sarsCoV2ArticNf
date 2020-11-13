@@ -112,7 +112,8 @@ workflow sarsCoV2ArticNf {
       qcStatistics = ncov2019ArticNf.qcCsv,
       kraken2Report = kraken2.out,
       coverageHist = qcStats.genomecvgHist,
-      vcfVariants = variantCalling.variantOnlyVcf
+      vcfVariants = variantCalling.variantOnlyVcf,
+      vcf = variantCalling.vcfFile
     }
 
     call createPdf {
@@ -296,6 +297,7 @@ task createJson {
     File kraken2Report
     File coverageHist
     File vcfVariants
+    File vcf
     String modules = "sarscov2helper/1.0"
     Int mem = 8
     Int timeout = 72
@@ -320,8 +322,11 @@ task createJson {
     cat ~{hostSamstats} | grep SN | cut -f2,3 > hostSamstats.txt 
     cat ~{coverageHist} | grep genome > meancvg.txt
     cat ~{vcfVariants} | grep -v ^# > v.txt
+    cat ~{vcf} | grep -v ^# > vcfFull.txt
 
     jsonCreater.py -s primerTrim.txt  -o hostSamstats.txt  -q ~{qcStatistics} -k ~{kraken2Report} -m meancvg.txt -v v.txt
+
+    depthFileGenerator.py -v vcfFull.txt
 
     >>>
 
@@ -333,6 +338,7 @@ task createJson {
 
     output {
     File json = "metrics.json"
+    File depth = "depth.txt"
 
   }
 }
@@ -346,6 +352,8 @@ task createPdf {
     String cvgPerBaseFileName = basename(cvgPerBaseFile)
     File cvgHistFile
     String cvgHistFileName = basename(cvgHistFile)
+    File depthFile
+    String depthFileName = basename(depthFile)
     String sample
     String library
     String external
@@ -356,7 +364,7 @@ task createPdf {
   }
 
   parameter_meta {
-    json: "json file of all the info"
+    json: "json file of all info"
     rmdScript: "rmd script to make the pdf"
     cvgPerBaseFile: "Coverage for base file"
     cvgHistFile: "Coverage for history file"
@@ -376,8 +384,9 @@ task createPdf {
     cp ~{cvgPerBaseFile} . 
     cp ~{cvgHistFile} .
     cp ~{json} .
+    cp ~{depthFile} .
 
-    Rscript -e "rmarkdown::render('./json_COVID_Report.Rmd', params=list(json='./~{jsonName}',perbasefile='./~{cvgPerBaseFileName}', histfile='./~{cvgHistFileName}', \
+    Rscript -e "rmarkdown::render('./json_COVID_Report.Rmd', params=list(json='./~{jsonName}',perbasefile='./~{cvgPerBaseFileName}', histfile='./~{cvgHistFileName}', depthfile='./depth.txt', \
                 sample='~{sample}', library='~{library}', ext='~{external}', run='~{run}', refname='MN'), output_file='~{sample}.pdf')"
 
     >>>
@@ -393,3 +402,4 @@ task createPdf {
 
   }
 }
+
