@@ -121,6 +121,7 @@ workflow sarsCoV2ArticNf {
       json = createJson.json,
       cvgPerBaseFile = qcStats.genomecvgPerBase,
       cvgHistFile = qcStats.cvgHist,
+      depthFile = createJson.depth,
       sample = name,
       library = inputLibrary,
       external = inputExternal,
