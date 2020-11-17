@@ -152,6 +152,7 @@ workflow sarsCoV2ArticNf {
       File outHostMappedAlignmentStats = qcStats.hostMappedAlignmentStats
       File outHostDepletedAlignmentStats = qcStats.hostDepletedAlignmentStats
       File jsonOut = createJson.json
+      File pdfOut = createPdf.pdf
     }
 }
 
