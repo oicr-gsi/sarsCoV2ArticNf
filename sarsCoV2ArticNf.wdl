@@ -20,7 +20,7 @@ workflow sarsCoV2ArticNf {
     }
 
     parameter_meta {
-        bcl2fastqMetas: "Samples, lanes, and runDirectory for bcl2fastq"
+        bcl2fastqMetas: "Samples , lanes, and runDirectory for bcl2fastq"
         schemeVersionInput: "Version for primer"
         bedInput: "Bed file for primer"
         inputLibrary: "Library of the run"
