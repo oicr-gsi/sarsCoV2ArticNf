@@ -56,7 +56,6 @@ workflow sarsCoV2ArticNf {
         trimPrimerSequencesPrimerTrimmedBam: "Mapped + primer trimmer bam from trimPrimerSequences step.",
         makeConsensusFasta: "Consensus fasta from makeConsensus step.",
         callVariantsTsv: "Variants tsv from callVariants step.",
-        qcPlotsPng: "Qc plot (depth) png from qcPlots step.",
         qcCsv: "Qc csv from qc step.",
         nextflowLogs: "All nextflow workflow task stdout and stderr logs gzipped and named by task.",
         outputKrakenTxt: "Taxonomic Classification from Kraken2",
@@ -142,7 +141,6 @@ workflow sarsCoV2ArticNf {
       File trimPrimerSequencesBam = ncov2019ArticNf.trimPrimerSequencesBam
       File trimPrimerSequencesPrimerTrimmedBam = ncov2019ArticNf.trimPrimerSequencesPrimerTrimmedBam
       File makeConsensusFasta = ncov2019ArticNf.makeConsensusFasta
-      File qcPlotsPng = ncov2019ArticNf.qcPlotsPng
       File callVariantsTsv = ncov2019ArticNf.callVariantsTsv
       File qcCsv = ncov2019ArticNf.qcCsv
       File nextflowLogs = ncov2019ArticNf.nextflowLogs
