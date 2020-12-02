@@ -9,6 +9,10 @@ struct bcl2fastqMeta {
   String runDirectory
 }
 
+struct Outputs {
+    Array[Output]+ outputs
+}
+
 workflow sarsCoV2ArticNf {
     input {
         Array[bcl2fastqMeta] bcl2fastqMetas
@@ -153,6 +157,7 @@ workflow sarsCoV2ArticNf {
       File outHostDepletedAlignmentStats = qcStats.hostDepletedAlignmentStats
       File jsonOut = createJson.json
       File pdfOut = createPdf.pdf
+      Array[Output]+ fastqsOutputz = bcl2fastq.fastqs
     }
 }
 
