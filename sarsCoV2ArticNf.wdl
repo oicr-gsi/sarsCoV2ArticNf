@@ -9,14 +9,6 @@ struct bcl2fastqMeta {
   String runDirectory
 }
 
-struct Output {
-    String name
-    Pair[File,Map[String,String]] fastqs
-}
-
-struct Outputs {
-    Array[Output]+ outputs
-}
 
 workflow sarsCoV2ArticNf {
     input {
@@ -156,7 +148,8 @@ workflow sarsCoV2ArticNf {
       File outHostDepletedAlignmentStats = qcStats.hostDepletedAlignmentStats
       File jsonOut = createJson.json
       File pdfOut = createPdf.pdf
-      Array[Output]+ fastqsOut = bcl2fastq.fastqs
+      Pair<File, Map<String,String>> fastq1 = bcl2fastq.fastqs[0]
+      Pair<File, Map<String,String>> fastq2 = bcl2fastq.fastqs[1]
     }
 }
 
@@ -408,4 +401,5 @@ task createPdf {
 
   }
 }
+
 
