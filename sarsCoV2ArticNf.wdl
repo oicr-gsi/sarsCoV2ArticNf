@@ -3,28 +3,19 @@ version 1.0
 import "imports/pull_bcl2fastq.wdl" as bcl2fastq
 import "imports/pull_ncov2019ArticNf.wdl" as ncov2019ArticNf
 
-struct bcl2fastqMeta {
-  Array[Sample]+ samples  # Sample: {Array[String]+, String}
-  Array[Int] lanes
-  String runDirectory
-}
-
-struct Output {
-    Pair[File,Map[String,String]] fastqs
-}
-
-struct Outputs {
-    Array[Output]+ outputs
-}
-
 workflow sarsCoV2ArticNf {
     input {
-        Array[bcl2fastqMeta] bcl2fastqMetas
+        Array[String] inputBarcodes
+        Array[Int] inputLanes
+        Boolean inputInlineUmi
+        String inputName
+        String inputRunDirectory
         String schemeVersionInput
         File bedInput
         String inputLibrary
         String inputExternal
         String inputRun
+
     }
 
     parameter_meta {
@@ -71,9 +62,9 @@ workflow sarsCoV2ArticNf {
 
     call bcl2fastq.bcl2fastq {
       input:
-        samples = bcl2fastqMetas[0].samples,
-        lanes = bcl2fastqMetas[0].lanes,
-        runDirectory = bcl2fastqMetas[0].runDirectory
+        samples = [inputBarcodes, inputName, inputInlineUmi],
+        lanes = inputLanes,
+        runDirectory = inputRunDirectory
     }
 
     File fastqR1Bcl = bcl2fastq.fastqs[0].fastqs.left
