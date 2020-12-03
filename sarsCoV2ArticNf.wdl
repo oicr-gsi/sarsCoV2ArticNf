@@ -11,6 +11,10 @@ struct Sample {
     Map[String,String]? patterns
 }
 
+struct SampleList {
+    Array[Sample]+ samples
+}
+
 
 workflow sarsCoV2ArticNf {
     input {
@@ -72,10 +76,12 @@ workflow sarsCoV2ArticNf {
     }
 
     Sample bclInput = {"barcodes": inputBarcodes, "name": inputName, "inlineUmi": inputInlineUmi, "acceptableUmiList": inputAcceptableUmiList, "patterns": inputPatterns}
+    
+    Array[Sample]+ samples = [bclInput]    
 
     call bcl2fastq.bcl2fastq {
       input:
-        samples = [bclInput],
+        samples = samples,
         lanes = inputLanes,
         runDirectory = inputRunDirectory
     }
