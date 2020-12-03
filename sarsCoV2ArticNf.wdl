@@ -3,34 +3,28 @@ version 1.0
 import "imports/pull_bcl2fastq.wdl" as bcl2fastq
 import "imports/pull_ncov2019ArticNf.wdl" as ncov2019ArticNf
 
-struct Sample {
-    Array[String]+ barcodes
-    String name
-    Boolean inlineUmi
-    String? acceptableUmiList
-    Map[String,String]? patterns
+struct bcl2fastqMeta {
+  Array[Sample]+ samples  # Sample: {Array[String]+, String}
+  Array[Int] lanes
+  String runDirectory
 }
 
-struct SampleList {
-    Array[Sample]+ samples
+struct Output {
+    Pair[File,Map[String,String]] fastqs
 }
 
+struct Outputs {
+    Array[Output]+ outputs
+}
 
 workflow sarsCoV2ArticNf {
     input {
-        Array[String] inputBarcodes
-        Array[Int] inputLanes
-        Boolean inputInlineUmi
-        String inputName
-        String inputRunDirectory
-        String? inputAcceptableUmiList
-        Map[String,String]? inputPatterns
+        Array[bcl2fastqMeta] bcl2fastqMetas
         String schemeVersionInput
         File bedInput
         String inputLibrary
         String inputExternal
         String inputRun
-
     }
 
     parameter_meta {
@@ -75,15 +69,11 @@ workflow sarsCoV2ArticNf {
       }
     }
 
-    Sample bclInput = {"barcodes": inputBarcodes, "name": inputName, "inlineUmi": inputInlineUmi, "acceptableUmiList": inputAcceptableUmiList, "patterns": inputPatterns}
-    
-    Array[Sample]+ samples = [bclInput]    
-
     call bcl2fastq.bcl2fastq {
       input:
-        samples = samples,
-        lanes = inputLanes,
-        runDirectory = inputRunDirectory
+        samples = bcl2fastqMetas[0].samples,
+        lanes = bcl2fastqMetas[0].lanes,
+        runDirectory = bcl2fastqMetas[0].runDirectory
     }
 
     File fastqR1Bcl = bcl2fastq.fastqs[0].fastqs.left
@@ -418,4 +408,3 @@ task createPdf {
 
   }
 }
-
