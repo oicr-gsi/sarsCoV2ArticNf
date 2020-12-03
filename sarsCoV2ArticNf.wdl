@@ -3,6 +3,15 @@ version 1.0
 import "imports/pull_bcl2fastq.wdl" as bcl2fastq
 import "imports/pull_ncov2019ArticNf.wdl" as ncov2019ArticNf
 
+struct Sample {
+    Array[String]+ barcodes
+    String name
+    Boolean inlineUmi
+    String? acceptableUmiList
+    Map[String,String]? patterns
+}
+
+
 workflow sarsCoV2ArticNf {
     input {
         Array[String] inputBarcodes
@@ -10,6 +19,8 @@ workflow sarsCoV2ArticNf {
         Boolean inputInlineUmi
         String inputName
         String inputRunDirectory
+        String? inputAcceptableUmiList
+        Map[String,String]? inputPatterns
         String schemeVersionInput
         File bedInput
         String inputLibrary
@@ -60,9 +71,11 @@ workflow sarsCoV2ArticNf {
       }
     }
 
+    Sample bclInput = {"barcodes": inputBarcodes, "name": inputName, "inlineUmi": inputInlineUmi, "acceptableUmiList": inputAcceptableUmiList, "patterns": inputPatterns}
+
     call bcl2fastq.bcl2fastq {
       input:
-        samples = [inputBarcodes, inputName, inputInlineUmi],
+        samples = [bclInput],
         lanes = inputLanes,
         runDirectory = inputRunDirectory
     }
@@ -399,5 +412,4 @@ task createPdf {
 
   }
 }
-
 
