@@ -47,8 +47,6 @@ workflow sarsCoV2ArticNf {
         }
       ]
       output_meta: {
-        bclFastqR1: "Fastq 1 from bcl2fastq",
-	      bclFastqR2: "Fastq 2 from bcl2fastq",
         readTrimmingFastqR1: "Fastq R1 from readTrimming step.",
         readTrimmingFastqR2: "Fastq R1 from readTrimming step.",
         readMappingBam: "Sorted bam from readMapping step.",
@@ -133,8 +131,6 @@ workflow sarsCoV2ArticNf {
 
 
     output {
-      File bclFastqR1 = fastqR1Bcl
-      File bclFastqR2 = fastqR2Bcl
       File readTrimmingFastqR1 = ncov2019ArticNf.readTrimmingFastqR1
       File readTrimmingFastqR2 = ncov2019ArticNf.readTrimmingFastqR2
       File readMappingBam = ncov2019ArticNf.readMappingBam
