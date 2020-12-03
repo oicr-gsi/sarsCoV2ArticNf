@@ -42,16 +42,6 @@
                   "runDirectory": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/runs/200521_M00753_0239_000000000-D8VPL"
               }
           ]
-        },
-        "wdl_outputs": {
-          "bcl2fastq.fastqs": [
-            {
-              "annotations": {},
-              "key": {
-                "name": "TWHO_0086_Np_n_PE_669_TS"
-              }
-            }
-          ]
         }
       }
     },
