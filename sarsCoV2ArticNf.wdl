@@ -65,6 +65,7 @@ workflow sarsCoV2ArticNf {
         makeConsensusFasta: "Consensus fasta from makeConsensus step.",
         callVariantsTsv: "Variants tsv from callVariants step.",
         qcCsv: "Qc csv from qc step.",
+        qcPlotsPng: "Qc plot (depth) png from qcPlots step.",
         nextflowLogs: "All nextflow workflow task stdout and stderr logs gzipped and named by task.",
         outputKrakenTxt: "Taxonomic Classification from Kraken2",
         outCvgHist: "Coverage history from QC Stats",
@@ -161,6 +162,7 @@ workflow sarsCoV2ArticNf {
       File makeConsensusFasta = ncov2019ArticNf.makeConsensusFasta
       File callVariantsTsv = ncov2019ArticNf.callVariantsTsv
       File qcCsv = ncov2019ArticNf.qcCsv
+      File qcPlotsPng = ncov2019ArticNf.qcPlotsPng
       File nextflowLogs = ncov2019ArticNf.nextflowLogs
       File outputKrakenTxt = kraken2.out
       File vcf = variantCalling.vcfFile
