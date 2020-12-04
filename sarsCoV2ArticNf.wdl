@@ -76,11 +76,20 @@ workflow sarsCoV2ArticNf {
     }
     
     
-    
+    Object run = object {
+         barcodes : inputBarcodes,
+         name: inputName,
+	 inlineUmi: inputInlineUmi,
+	 acceptableUmiList: inputAcceptableUmiList,
+         patterns: inputPatterns 
+     }
+    Array[Sample]+ bclInput = [run]
+
+
 
     call bcl2fastq.bcl2fastq {
       input:
-        samples = [{"barcodes": inputBarcodes, "name": inputName, "inlineUmi": inputInlineUmi, "acceptableUmiList": inputAcceptableUmiList, "patterns": inputPatterns}],
+        samples = bclInput,
         lanes = inputLanes,
         runDirectory = inputRunDirectory
     }
