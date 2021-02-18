@@ -1,0 +1,62 @@
+{
+  "defaults": {
+    "description": "sarsCoV2ArticNf workflow test",
+    "metrics_calculate": "calculate.sh",
+    "metrics_compare": "compare.sh",
+    "output_metrics_dir": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/1.0.0/output_metrics",
+    "parameters": {
+      "wdl_options": {
+        "read_from_cache": false,
+        "write_to_cache": false
+      }
+    }
+  },
+  "tests": [
+    {
+      "id": "sarsCoV2ArticNf_dataset1",
+      "parameters": {
+      "wdl_deps_zip": "${workflow_bundle_dir}/Workflow_Bundle_sarsCoV2ArticNf/1.0.0/lib/imports.zip",
+        "wdl_inputs": {
+          "sarsCoV2ArticNf.schemeVersionInput": "V3",
+          "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+	  "sarsCoV2ArticNf.inputLibrary": "test_lib",
+	  "sarsCoV2ArticNf.inputExternal": "test_external",
+	  "sarsCoV2ArticNf.inputRun": "test_run",
+          "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
+          "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingFilter": true,
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingPositions": true,
+          "sarsCoV2ArticNf.inputBarcodes": ["GAAGTCTT-ACTACGGT"],
+          "sarsCoV2ArticNf.inputInlineUmi": false,
+          "sarsCoV2ArticNf.inputName": "TWHO_0086_Np_n_PE_669_TS",
+          "sarsCoV2ArticNf.inputLanes": [1],
+          "sarsCoV2ArticNf.inputRunDirectory": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/runs/200521_M00753_0239_000000000-D8VPL"
+        }
+      }
+    },
+    {
+      "id": "sarsCoV2ArticNf_dataset2",
+      "parameters": {
+      "wdl_deps_zip": "${workflow_bundle_dir}/Workflow_Bundle_sarsCoV2ArticNf/1.0.0/lib/imports.zip",
+        "wdl_inputs": {
+          "sarsCoV2ArticNf.schemeVersionInput": "V3",
+          "sarsCoV2ArticNf.bedInput": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+	        "sarsCoV2ArticNf.inputLibrary": "test_lib",
+          "sarsCoV2ArticNf.inputExternal": "test_external",
+          "sarsCoV2ArticNf.inputRun": "test_run",
+          "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
+          "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingFilter": true,
+          "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingPositions": true,
+          "sarsCoV2ArticNf.inputBarcodes": ["AAGTACAG-GTCACGTC"],
+          "sarsCoV2ArticNf.inputInlineUmi": false,
+          "sarsCoV2ArticNf.inputName": "TWHO_0085_Np_n_PE_562_TS",
+          "sarsCoV2ArticNf.inputLanes": [1],
+          "sarsCoV2ArticNf.inputRunDirectory": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/runs/200521_M00753_0239_000000000-D8VPL"
+        }
+      }
+    }
+  ]
+}
