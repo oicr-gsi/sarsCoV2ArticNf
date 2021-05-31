@@ -77,7 +77,7 @@ workflow sarsCoV2ArticNf {
     }
     
    #https://github.com/broadinstitute/cromwell/issues/4512 
-    Object run = object {
+    Sample run = object {
          barcodes : inputBarcodes,
          name: inputName,
 	 inlineUmi: inputInlineUmi,

@@ -1,0 +1,6 @@
+{
+    "names": [
+        "sarsCov2Artic"
+    ],
+    "wdl": "sarsCoV2ArticNf.wdl"
+}
