@@ -1,0 +1,560 @@
+[
+    {
+        "arguments": {
+            "sarsCoV2ArticNf.bcl2fastq.basesMask": null,
+            "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
+            "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
+            "sarsCoV2ArticNf.bcl2fastq.process_bcl2fastq": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_bcl2fastqJail": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_extraOptions": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingFilter": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingPositions": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_memory": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_temporaryDirectory": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_threads": null,
+            "sarsCoV2ArticNf.bcl2fastq.timeout": null,
+            "sarsCoV2ArticNf.bedInput": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "sarsCoV2ArticNf.createJson.mem": null,
+            "sarsCoV2ArticNf.createJson.modules": null,
+            "sarsCoV2ArticNf.createJson.timeout": null,
+            "sarsCoV2ArticNf.createPdf.cvgHistFileName": null,
+            "sarsCoV2ArticNf.createPdf.cvgPerBaseFileName": null,
+            "sarsCoV2ArticNf.createPdf.depthFileName": null,
+            "sarsCoV2ArticNf.createPdf.jsonName": null,
+            "sarsCoV2ArticNf.createPdf.mem": null,
+            "sarsCoV2ArticNf.createPdf.modules": null,
+            "sarsCoV2ArticNf.createPdf.rmdScript": null,
+            "sarsCoV2ArticNf.createPdf.timeout": null,
+            "sarsCoV2ArticNf.inputAcceptableUmiList": null,
+            "sarsCoV2ArticNf.inputBarcodes": [
+                "GAAGTCTT-ACTACGGT"
+            ],
+            "sarsCoV2ArticNf.inputExternal": "test_external",
+            "sarsCoV2ArticNf.inputInlineUmi": false,
+            "sarsCoV2ArticNf.inputLanes": [
+                1
+            ],
+            "sarsCoV2ArticNf.inputLibrary": "test_lib",
+            "sarsCoV2ArticNf.inputName": "TWHO_0086_Np_n_PE_669_TS",
+            "sarsCoV2ArticNf.inputPatterns": null,
+            "sarsCoV2ArticNf.inputRun": "test_run",
+            "sarsCoV2ArticNf.inputRunDirectory": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/runs/200521_M00753_0239_000000000-D8VPL",
+            "sarsCoV2ArticNf.kraken2.kraken2DB": null,
+            "sarsCoV2ArticNf.kraken2.mem": null,
+            "sarsCoV2ArticNf.kraken2.modules": null,
+            "sarsCoV2ArticNf.kraken2.timeout": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_additionalParameters": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_allowNoprimer": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_compositeHumanVirusReferencePath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_illuminaKeepLen": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_illuminaQualThreshold": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ivarFreqThreshold": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ivarMinDepth": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_mem": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_modules": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_mpileupDepth": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ncov2019ArticNextflowPath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ncov2019ArticPath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_timeout": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_viralContigName": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.renameInputs_mem": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.renameInputs_timeout": null,
+            "sarsCoV2ArticNf.qcStats.mem": null,
+            "sarsCoV2ArticNf.qcStats.modules": null,
+            "sarsCoV2ArticNf.qcStats.timeout": null,
+            "sarsCoV2ArticNf.schemeVersionInput": "V3",
+            "sarsCoV2ArticNf.variantCalling.mem": null,
+            "sarsCoV2ArticNf.variantCalling.modules": null,
+            "sarsCoV2ArticNf.variantCalling.sarsCovidRef": null,
+            "sarsCoV2ArticNf.variantCalling.timeout": null
+        },
+        "description": "sarsCoV2ArticNf workflow test",
+        "engineArguments": {},
+        "id": "sarsCoV2ArticNf_dataset1",
+        "metadata": {
+            "sarsCoV2ArticNf.callVariantsTsv": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.consensusFasta": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.fastq1": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.fastq2": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.jsonOut": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.makeConsensusFasta": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.nextflowLogs": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outCvgHist": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outGenomecvgHist": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outGenomecvgPerBase": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outHostDepletedAlignmentStats": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outHostMappedAlignmentStats": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outputKrakenTxt": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.pdfOut": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.qcCsv": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.qcPlotsPng": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readMappingBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readTrimmingFastqR1": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readTrimmingFastqR2": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.trimPrimerSequencesBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.trimPrimerSequencesPrimerTrimmedBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.variantOnlyVcf": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.vcf": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset1_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/./calculate.sh",
+                "metrics_compare": "@CHECKOUT@/./compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/1.0.0/output_metrics/sarsCoV2ArticNf_dataset1.metrics",
+                "type": "script"
+            }
+        ]
+    },
+    {
+        "arguments": {
+            "sarsCoV2ArticNf.bcl2fastq.basesMask": null,
+            "sarsCoV2ArticNf.bcl2fastq.mismatches": 1,
+            "sarsCoV2ArticNf.bcl2fastq.modules": "bcl2fastq/2.20.0.422 bcl2fastq-jail/3.1.2",
+            "sarsCoV2ArticNf.bcl2fastq.process_bcl2fastq": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_bcl2fastqJail": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_extraOptions": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingBcls": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingFilter": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_ignoreMissingPositions": true,
+            "sarsCoV2ArticNf.bcl2fastq.process_memory": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_temporaryDirectory": null,
+            "sarsCoV2ArticNf.bcl2fastq.process_threads": null,
+            "sarsCoV2ArticNf.bcl2fastq.timeout": null,
+            "sarsCoV2ArticNf.bedInput": {
+                "contents": {
+                    "configuration": "/.mounts/labs/gsiprojects/gsi/rshah/nCoV-2019.amplicons.V3.bed",
+                    "externalIds": [
+                        {
+                            "id": "TEST",
+                            "provider": "TEST"
+                        }
+                    ]
+                },
+                "type": "EXTERNAL"
+            },
+            "sarsCoV2ArticNf.createJson.mem": null,
+            "sarsCoV2ArticNf.createJson.modules": null,
+            "sarsCoV2ArticNf.createJson.timeout": null,
+            "sarsCoV2ArticNf.createPdf.cvgHistFileName": null,
+            "sarsCoV2ArticNf.createPdf.cvgPerBaseFileName": null,
+            "sarsCoV2ArticNf.createPdf.depthFileName": null,
+            "sarsCoV2ArticNf.createPdf.jsonName": null,
+            "sarsCoV2ArticNf.createPdf.mem": null,
+            "sarsCoV2ArticNf.createPdf.modules": null,
+            "sarsCoV2ArticNf.createPdf.rmdScript": null,
+            "sarsCoV2ArticNf.createPdf.timeout": null,
+            "sarsCoV2ArticNf.inputAcceptableUmiList": null,
+            "sarsCoV2ArticNf.inputBarcodes": [
+                "AAGTACAG-GTCACGTC"
+            ],
+            "sarsCoV2ArticNf.inputExternal": "test_external",
+            "sarsCoV2ArticNf.inputInlineUmi": false,
+            "sarsCoV2ArticNf.inputLanes": [
+                1
+            ],
+            "sarsCoV2ArticNf.inputLibrary": "test_lib",
+            "sarsCoV2ArticNf.inputName": "TWHO_0085_Np_n_PE_562_TS",
+            "sarsCoV2ArticNf.inputPatterns": null,
+            "sarsCoV2ArticNf.inputRun": "test_run",
+            "sarsCoV2ArticNf.inputRunDirectory": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/runs/200521_M00753_0239_000000000-D8VPL",
+            "sarsCoV2ArticNf.kraken2.kraken2DB": null,
+            "sarsCoV2ArticNf.kraken2.mem": null,
+            "sarsCoV2ArticNf.kraken2.modules": null,
+            "sarsCoV2ArticNf.kraken2.timeout": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_additionalParameters": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_allowNoprimer": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_compositeHumanVirusReferencePath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_illuminaKeepLen": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_illuminaQualThreshold": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ivarFreqThreshold": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ivarMinDepth": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_mem": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_modules": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_mpileupDepth": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ncov2019ArticNextflowPath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_ncov2019ArticPath": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_timeout": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.illumina_ncov2019ArticNf_viralContigName": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.renameInputs_mem": null,
+            "sarsCoV2ArticNf.ncov2019ArticNf.renameInputs_timeout": null,
+            "sarsCoV2ArticNf.qcStats.mem": null,
+            "sarsCoV2ArticNf.qcStats.modules": null,
+            "sarsCoV2ArticNf.qcStats.timeout": null,
+            "sarsCoV2ArticNf.schemeVersionInput": "V3",
+            "sarsCoV2ArticNf.variantCalling.mem": null,
+            "sarsCoV2ArticNf.variantCalling.modules": null,
+            "sarsCoV2ArticNf.variantCalling.sarsCovidRef": null,
+            "sarsCoV2ArticNf.variantCalling.timeout": null
+        },
+        "description": "sarsCoV2ArticNf workflow test",
+        "engineArguments": {},
+        "id": "sarsCoV2ArticNf_dataset2",
+        "metadata": {
+            "sarsCoV2ArticNf.callVariantsTsv": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.consensusFasta": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.fastq1": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.fastq2": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.jsonOut": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.makeConsensusFasta": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.nextflowLogs": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outCvgHist": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outGenomecvgHist": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outGenomecvgPerBase": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outHostDepletedAlignmentStats": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outHostMappedAlignmentStats": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.outputKrakenTxt": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.pdfOut": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.qcCsv": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.qcPlotsPng": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readMappingBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readTrimmingFastqR1": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.readTrimmingFastqR2": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.trimPrimerSequencesBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.trimPrimerSequencesPrimerTrimmedBam": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.variantOnlyVcf": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            },
+            "sarsCoV2ArticNf.vcf": {
+                "contents": [
+                    {
+                        "outputDirectory": "@SCRATCH@/@DATE@_Workflow_sarsCoV2ArticNf_sarsCoV2ArticNf_dataset2_@JENKINSID@"
+                    }
+                ],
+                "type": "ALL"
+            }
+        },
+        "validators": [
+            {
+                "metrics_calculate": "@CHECKOUT@/./calculate.sh",
+                "metrics_compare": "@CHECKOUT@/./compare.sh",
+                "output_metrics": "/.mounts/labs/gsi/testdata/sarsCoV2ArticNf/1.0.0/output_metrics/sarsCoV2ArticNf_dataset2.metrics",
+                "type": "script"
+            }
+        ]
+    }
+]

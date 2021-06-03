@@ -1,1 +1,1 @@
-find . \( -type f -size +0 -iname "*.pdf" \) -printf "pdf file exists\n";
+find . \( -xtype f -size +0 -iname "*.pdf" \) -printf "pdf file exists\n";
